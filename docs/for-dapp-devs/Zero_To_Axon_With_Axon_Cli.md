@@ -24,7 +24,7 @@ $ `git clone git@github.com:axonweb3/axon-cli.git`
 
 $ `cd axon-cli`
 
-3. Config `docker`
+3. Config Docker
 
 Before starting `docker` containers, you have to enable TCP port for `docker` (0.0.0.0:2375 in this case).
 
