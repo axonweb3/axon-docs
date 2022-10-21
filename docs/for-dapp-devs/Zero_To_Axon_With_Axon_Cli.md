@@ -34,13 +34,14 @@ $ `docker run -it -d --name=socat -p 2375:2375 -v /var/run/docker.sock:/var/run/
 
 - On Linux:
 
-1. Create `daemon.json` file in `/etc/docker`:
+1. Create `daemon.json` file in `/etc/docker` directory:
 
 ```
 {"hosts": ["tcp://0.0.0.0:2375", "unix:///var/run/docker.sock"]}
 ```
 
-2. Add `/etc/systemd/system/docker.service.d/override.conf`
+2. Add configuration in file `/etc/systemd/system/docker.service.d/override.conf` with:
+
 
 ```
 [Service]  ExecStart=  ExecStart=/usr/bin/dockerd
@@ -74,7 +75,7 @@ Now your basic Axon-cli development environment is ready.
 
 Enter the axon-cli interface by running the following command:
 
-$ `../target/release/axon-cli`
+$ `./target/release/axon-cli`
 
 Quit axon-cli interface by `ctrl C`.
 
