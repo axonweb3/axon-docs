@@ -94,7 +94,7 @@ Stop the four Docker nodes just started.
 
 - `axon rm`
 
-Remove the four `docker` containers just created.
+Remove the four Docker containers just created.
 
 - `axon del`
 
