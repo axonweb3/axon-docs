@@ -50,7 +50,7 @@ $ `docker run -it -d --name=socat -p 2375:2375 -v /var/run/docker.sock:/var/run/
 
 $ `systemctl daemon-reload`
 
-4. Restart `docker`
+4. Restart Docker
 
 $ `systemctl restart docker.service`
 
