@@ -18,11 +18,11 @@ Axon-cli is an all-in-one client that makes operating Axon fast and easy. It con
 
 1. Start by cloning the Axon-cli GitHub repo from [GitHub](https://github.com/axonweb3/axon-devops/tree/main/axon-cli)
 
-$ `git clone git@github.com:axonweb3/axon-cli.git`
+`$ git clone git@github.com:axonweb3/axon-cli.git`
 
 2. Enter into axon-cli directory
 
-$ `cd axon-cli`
+`$ cd axon-cli`
 
 3. Config Docker
 
@@ -30,7 +30,7 @@ Before starting Docker containers, you have to enable TCP port for Docker (0.0.0
 
 - On Mac OS, run:
 
-$ `docker run -it -d --name=socat -p 2375:2375 -v /var/run/docker.sock:/var/run/docker.sock bobrik/socat TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock`
+`$ docker run -it -d --name=socat -p 2375:2375 -v /var/run/docker.sock:/var/run/docker.sock bobrik/socat TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock`
 
 - On Linux:
 
@@ -48,15 +48,15 @@ $ `docker run -it -d --name=socat -p 2375:2375 -v /var/run/docker.sock:/var/run/
 
 3. Reload the system daemon
 
-$ `systemctl daemon-reload`
+`$ systemctl daemon-reload`
 
 4. Restart Docker
 
-$ `systemctl restart docker.service`
+`$ systemctl restart docker.service`
 
 5. Config data directory
 
-$ `cp -r devtools ~/.axon/`
+`$ cp -r devtools ~/.axon/`
 
 
 
@@ -64,7 +64,7 @@ $ `cp -r devtools ~/.axon/`
 
 Under the axon-cli directory, run the following command:
 
-$ `cargo build --release`
+`$ cargo build --release`
 
 Now your basic Axon-cli development environment is ready.
 
@@ -74,7 +74,7 @@ Now your basic Axon-cli development environment is ready.
 
 Enter the axon-cli interface by running the following command:
 
-$ `./target/release/axon-cli`
+`$ ./target/release/axon-cli`
 
 Quit axon-cli interface by `ctrl C`.
 
@@ -114,7 +114,7 @@ Check the status by running the following commands:
 
 1. **Check the liveness of nodes**
 
-> $ `docker ps`
+> `$ docker ps`
 
 ```
 CONTAINER ID   IMAGE                COMMAND                  CREATED          STATUS                                    PORTS                                            NAMES
@@ -126,7 +126,7 @@ bcf08ee3df09   wenyuancas/axon:v1   "./axon -c=/app/devt…"   21 seconds ago   
 
 2. **Check the logs**
 
-> $ `docker logs axon4 | grep height`
+> `$ docker logs axon4 | grep height`
 
 Return:
 
@@ -167,9 +167,10 @@ Use `axon bm` command to start benchmark and run `docker logs bm` to check the s
 For example,
 
 ```
- $ `docker logs bm`
+ `$ docker logs bm`
 ```
 
+```
 /////////////////////////////////////////////////////
 
 benchmark time: 60000 msendpoint: <http://172.17.0.1:8000>
@@ -187,7 +188,7 @@ preparedbenchmark case 0: ./benchmark
 benchmark time: 64650.558417998254 mstransaction count: 7200TPS: 111.3679475658724 mstransfer rate: 98.83
 
 /////////////////////////////////////////////////////
-
+```
 
 
 5. **Start `apm`**
@@ -238,7 +239,7 @@ After setting up the right config and successfully starting `apm`, you can acces
 
 
 
-Now you can see the `axon-node` Dashboard is displayed as below. Grafana provides time range control which is 7 days by default. Click on the time units on the top navbar to change the range. (I select the **Last 1 hour** as shown below.)
+Now you can see the `axon-node` Dashboard is displayed as below. Grafana provides time range control which is 7 days by default. Click on the time units on the top navbar to change the range. (The **Last 1 hour** is selected here as shown below.)
 
 <img alt="dash1 last 1 hour" src={useBaseUrl("img/for-dapp-devs/zero-to-axon-with-axon-cli/dash1 last 1 hour.png")}  width="100%"/>
 
