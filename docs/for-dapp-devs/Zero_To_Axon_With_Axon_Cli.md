@@ -46,7 +46,7 @@ $ `docker run -it -d --name=socat -p 2375:2375 -v /var/run/docker.sock:/var/run/
 [Service]  ExecStart=  ExecStart=/usr/bin/dockerd
 ```
 
-3. Reload the system `daemon`
+3. Reload the system daemon
 
 $ `systemctl daemon-reload`
 
