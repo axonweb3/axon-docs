@@ -90,7 +90,7 @@ You can start one (by default) or four docker nodes. For example, to start four 
 
 - `axon stop`
 
-Stop the four `docker` nodes just started.
+Stop the four Docker nodes just started.
 
 - `axon rm`
 
