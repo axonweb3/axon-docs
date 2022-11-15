@@ -1,7 +1,7 @@
 ---
 title: JSON-RPC API Endpoints
 hide_title: true
-sidebar_position:4
+sidebar_position: 4
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -906,7 +906,7 @@ Returns the number of transactions sent from an address.
 
 ###### Returns
 
- integer of the number of transactions send from this address.
+ Integer of the number of transactions send from this address.
 
 ###### Examples
 
@@ -2382,7 +2382,7 @@ The Web3ReceiptLog objects.
 
 *   `address`: [`H160`](#type-H160) - DATA, Hex encoded 20 Bytes - address from which this log originated.
 
-*   `topics`: `Arrary<`[`H256`](#type-H256)`>` - rray of DATA - Array of 0 to 4 Hex encode 32 Bytes DATA of indexed log arguments.
+*   `topics`: `Arrary<`[`H256`](#type-H256)`>` - Array of DATA - Array of 0 to 4 Hex encode 32 Bytes DATA of indexed log arguments.
 	* In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.
 
 *   `data`: [`Hex`](#type-Hex)`>` - DATA - contains one or more 32 Bytes non-indexed arguments of the log.
