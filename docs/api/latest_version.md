@@ -14,7 +14,7 @@ JSON-RPC API Endpoints allow you to interact with a local or remote Axon node us
 ## Gossip Methods
 Gossip methods track the head of the chain. In this way, transactions can move through the network and find their way into blocks; clients can discover new blocks as well. 
 
-### Method `eth_sendRawTransaction`
+### `eth_sendRawTransaction`
 * `eth_sendRawTransaction(data)`
     * `data`: [`Hex`](#type-Hex) 
 * result: [`H256`](#type-H256) 
@@ -59,7 +59,7 @@ Response
 ```
 
 
-### Method `eth_blockNumber`
+### `eth_blockNumber`
 * `eth_blockNumber()`
 * result: [`U256`](#type-U256) 
 
@@ -100,7 +100,7 @@ Response
 }
 ```
 
-### Method `eth_submitWork`
+### `eth_submitWork`
 * `eth_submitWork(nc,hash,summary)`
     * `nc`: [`U256`](#type-U256)
     * `hash`: [`H256`](#type-H256)
@@ -149,7 +149,7 @@ Response
 
 ```
 
-### Method `eth_submitHashrate`
+### `eth_submitHashrate`
 * `eth_submitHashrate(hash_rate,client_id)`
     * `hash_rate`: [`Hex`](#type-Hex)
     * `client_id`: [`Hex`](#type-Hex)
@@ -199,7 +199,7 @@ Response
 History methods retrieve the historical records of every block since the genesis. This is like one large append-only file, and includes all block headers, block bodies, uncle blocks, and transaction receipts.
 
 
-### Method `eth_getBlockByNumber`
+### `eth_getBlockByNumber`
 * `eth_getBlockByNumber(number,show_rich_tx)`
     * `number`: [`BlockId`](#type-BlockId) `|` `"earliest"``|` `"latest"``|` `"pending"`
     * `show_rich_tx`: [`bool`](#type-bool)
@@ -293,7 +293,7 @@ Response
 
 ```
 
-### Method `eth_getBlockByHash`
+### `eth_getBlockByHash`
 * `eth_getBlockByHash(hash,show_rich_tx)`
     * `hash`: [`H256`](#type-H256) 
     * `show_rich_tx`: [`bool`](#type-bool)
@@ -388,7 +388,7 @@ Response
 ```
 
 
-### Method `eth_getTransactionByHash`
+### `eth_getTransactionByHash`
 * `eth_getTransactionByHash(blockHash)`
     * `blockHash`: [`H256`](#type-H256)
 * result: [`TransactionView`](#type-TransactionView)
@@ -470,7 +470,7 @@ Response
 
 ```
 
-### Method `eth_getBlockTransactionCountByNumber`
+### `eth_getBlockTransactionCountByNumber`
 * `eth_getBlockTransactionCountByNumber(number)`
     * `number`: [`BlockId`](#type-BlockId)
 * result: [`U256`](#type-U256)
@@ -514,7 +514,7 @@ Response
 
 ```
 
-### Method `eth_getTransactionReceipt`
+### `eth_getTransactionReceipt`
 * `eth_getTransactionReceipt(hash)`
     * `hash`: [`H256`](#type-H256)
 * result: [`Web3Receipt`](#type-Web3Receipt)
@@ -598,7 +598,7 @@ Response
 
 ```
 
-### Method `eth_feeHistory`
+### `eth_feeHistory`
 * `eth_feeHistory(block_count,newest_block,reward_percentiles)`
     * `block_count`: [`U256`](#type-U256)
 	* `newest_block`: [`BlockId`](#type-BlockId)
@@ -655,7 +655,7 @@ Response
 
 ```
 
-### Method `eth_getBlockTransactionCountByHash`
+### `eth_getBlockTransactionCountByHash`
 * `eth_getBlockTransactionCountByHash(hash)`
     * `hash`: [`Hash`](#type-Hash)
 * result: [`U256`](#type-U256) 
@@ -699,7 +699,7 @@ Response
 
 ```
 
-### Method `eth_getTransactionByBlockHashAndIndex`
+### `eth_getTransactionByBlockHashAndIndex`
 * `eth_getTransactionByBlockHashAndIndex(hash,position)`
     * `hash`: [`Hash`](#type-Hash)
 	* `position`: [`U256`](#type-U256)
@@ -783,7 +783,7 @@ Response
 
 ```
 
-### Method `eth_getTransactionByBlockNumberAndIndex`
+### `eth_getTransactionByBlockNumberAndIndex`
 * `eth_getTransactionByBlockNumberAndIndex(number,position)`
     * `number`: [`BlockId`](#type-BlockId)
 	* `position`: [`U256`](#type-U256)
@@ -870,7 +870,7 @@ Response
 ## State Methods
 State methods report the current state of all the data stored. The "state" is like one big shared piece of RAM, and includes account balances, contract data, and gas estimations.
 
-### Method `eth_getTransactionCount`
+### `eth_getTransactionCount`
 * `eth_getTransactionCount(address,number)`
     * `address`: [`H160`](#type-H160)
     * `number`: [`BlockId`](#type-BlockId)
@@ -917,7 +917,7 @@ Response
 
 ```
 
-### Method `eth_getBalance`
+### `eth_getBalance`
 * `eth_getBalance(address,number)`
     * `address`: [`H160`](#type-H160)
     * `number`: [`BlockId`](#type-BlockId)
@@ -964,7 +964,7 @@ Response
 
 ```
 
-### Method `eth_chainId`
+### `eth_chainId`
 * `eth_chainId()`
 * result: [`U256`](#type-U256)
 
@@ -1007,7 +1007,7 @@ Response
 }
 
 ```
-### Method `net_version`
+### `net_version`
 * `net_version()`
 * result: [`U256`](#type-U256)
 
@@ -1050,7 +1050,7 @@ Response
 }
 
 ```
-### Method `eth_call`
+### `eth_call`
 * `eth_call(req,number)`
     * `req`: [`Web3CallRequest`](#type-Web3CallRequest)
 	* `number`: [`BlockId`](#type-BlockId)
@@ -1103,7 +1103,7 @@ Response
 }
 
 ```
-### Method `eth_estimateGas`
+### `eth_estimateGas`
 * `eth_estimateGas(req,number)`
     * `req`: [`Web3CallRequest`](#type-Web3CallRequest)
 	* `number`: [`BlockId`](#type-BlockId)
@@ -1156,7 +1156,7 @@ Response
 }
 
 ```
-### Method `eth_getCode`
+### `eth_getCode`
 * `eth_getCode(address,block_number)`
     * `address`: [`H160`](#type-H160)
 	* `block_number`: [`BlockId`](#type-BlockId)
@@ -1204,7 +1204,7 @@ Response
 
 ```
 
-### Method `eth_gasPrice`
+### `eth_gasPrice`
 * `eth_gasPrice()`
     
 * result: [`U256`](#type-U256)
@@ -1246,7 +1246,7 @@ Response
 }
 ```
 
-### Method `net_listening`
+### `net_listening`
 * `net_listening()`
     
 * result: [`bool`](#type-bool)
@@ -1287,7 +1287,7 @@ Response
 	"id": 2
 }
 ```
-### Method `eth_mining`
+### `eth_mining`
 * `eth_mining()`
     
 * result: [`bool`](#type-bool)
@@ -1331,7 +1331,7 @@ Response
 }
 ```
 
-### Method `net_peerCount`
+### `net_peerCount`
 * `net_peerCount()`
     
 * result: [`U256`](#type-U256)
@@ -1373,7 +1373,7 @@ Response
 }
 ```
 
-### Method `eth_syncing`
+### `eth_syncing`
 * `eth_syncing()`
     
 * result: [`Web3SyncStatus`](#type-Web3SyncStatus) `|` `false`
@@ -1432,7 +1432,7 @@ Or when not syncing
 
 ```
 
-### Method `eth_getLogs`
+### `eth_getLogs`
 * `eth_getLogs(filter)`
     * `filter`: [`Web3Filter`](#type-Web3Filter)
 * result: `Arrary`[`Web3Log`](#type-Web3Log)
@@ -1506,7 +1506,7 @@ Response
 }
 ```
 
-### Method `web3_clientVersion`
+### `web3_clientVersion`
 * `web3_clientVersion()`  
 * result: [`String`](#type-String) 
 
@@ -1546,7 +1546,7 @@ Response
 	"id": 2
 }
 ```
-### Method `eth_accounts`
+### `eth_accounts`
 * `eth_accounts()`   
 * result: `Array<`[`Hex`](#type-Hex)`>`
 
@@ -1587,7 +1587,7 @@ Response
 }
 ```
 
-### Method `web3_sha3`
+### `web3_sha3`
 * `web3_sha3(data)`
     * `data`: [`Hex`](#type-Hex)
 * result: [`Hash`](#type-Hash)
@@ -1630,7 +1630,7 @@ Response
 
 ```
 
-### Method `eth_getStorageAt`
+### `eth_getStorageAt`
 * `eth_getStorageAt(address,position,number)`
     * `address`: [`H160`](#type-H160)
     * `position`: [`U256`](#type-U256)
@@ -1681,7 +1681,7 @@ Response
 
 ```
 
-### Method `eth_coinbase`
+### `eth_coinbase`
 * `eth_coinbase()`
 * result: [`H160`](#type-H160) 
 
@@ -1724,7 +1724,7 @@ Response
 
 ```
 
-### Method `eth_hashrate`
+### `eth_hashrate`
 * `eth_hashrate()`
 * result: [`U256`](#type-U256) 
 
@@ -1831,7 +1831,7 @@ The 32-byte fixed-length binary data.In JSONRPC, it is Hex encoded as a 0x-prefi
 0x41e946c6f4dd97ad2828c056af973087b53044bf567caf0ea870ab45460afd65
 ```
 
-### Type `String`
+### `String`
 
 A UTF-8–encoded, growable string.
 
