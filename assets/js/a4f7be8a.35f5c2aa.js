@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkaxon_docs=self.webpackChunkaxon_docs||[]).push([[750],{6966:e=>{e.exports=JSON.parse('{"title":"API","slug":"/category/api","permalink":"/category/api","navigation":{"previous":{"title":"Troubleshooting","permalink":"/for-dapp-devs/troubleshooting"},"next":{"title":"Latest Version","permalink":"/api/latest_version"}}}')}}]);
