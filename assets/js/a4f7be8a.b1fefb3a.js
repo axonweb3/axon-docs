@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkaxon_docs=self.webpackChunkaxon_docs||[]).push([[750],{6966:e=>{e.exports=JSON.parse('{"title":"API","slug":"/category/api","permalink":"/category/api","navigation":{"previous":{"title":"Network","permalink":"/for-contributor/network"},"next":{"title":"Latest Version","permalink":"/api/latest_version"}}}')}}]);
