@@ -76,7 +76,7 @@ In this example, we define the trait [`IbcCrossChainStorage`](https://github.com
 
 ```rust
 pub trait IbcCrossChainStorage {
-		fn get_client_type(&self, client_id: &ClientId) -> ProtocolResult<Option<ClientType>>;
+	fn get_client_type(&self, client_id: &ClientId) -> ProtocolResult<Option<ClientType>>;
 
     fn get_client_state(&self, client_id: &ClientId) -> ProtocolResult<Option<AnyClientState>>;
 
