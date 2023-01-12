@@ -50,13 +50,9 @@ The improvements we've made on Axon are in three major areas:
 
 #### Aggregate signature
 
-In Tendermint, a node casts a prevote on a proposal upon receiving it. The prevote vote is then broadcast to other nodes across the network. The communication complexity at this moment is:
+In Tendermint, a node casts a prevote on a proposal upon receiving it. The prevote vote is then broadcast to other nodes across the network. The communication complexity at this moment is: $O(n^{2})$
 
-$O(n^{2})$
-
-Aggregate signature allows all the nodes to send prevote votes to a randomly specified Relayer node. The Relayer node collects the signatures it receives and computes the aggregate signature, then uses a bit vector to indicate the exact nodes involved. The aggregate signatures and the bit vector will be sent to other nodes. The precommit voting is done in a similar manner. As a result, the communication complexity can be reduced to:
-
-$O(n)$
+Aggregate signature allows all the nodes to send prevote votes to a randomly specified Relayer node. The Relayer node collects the signatures it receives and computes the aggregate signature, then uses a bit vector to indicate the exact nodes involved. The aggregate signatures and the bit vector will be sent to other nodes. The precommit voting is done in a similar manner. As a result, the communication complexity can be reduced to: $O(n)$
 
 But what if Relayer fails to send the aggregate signatures to the consensus nodes, or Relayer is evil and only sends the aggregate signature to a small portion of the consensus nodes, so the consensus can no longer work? 
 
@@ -66,7 +62,7 @@ This can be dismissed by a mechanism where honest nodes have to send nil vote in
 
 Once a consensus node receives a proposal, it parallels the CompactBlock verification with the prevote vote, in order to get a complete transaction for verification. A node won't propose precommit until the prevote aggregate signature and the CompactBlock verification result are received.
 
-## Overal Architecture
+## Overall Architecture
 
 Overlord Consensus contains the following components:
 
