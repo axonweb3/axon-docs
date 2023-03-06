@@ -18,8 +18,8 @@ As an EVM-compatible chain, Axon utilizes the [EVM MPT](https://ethereum.org/en/
 
 Axon application developers can access CKB cells already stored in ICSC by using a precompiled contract located at address 0xf0. The usage is as follows.
 
-```
-// The address 0xf0 implements the function of geting cell.
+```solidity
+// The address 0xf0 implements the function of getting cell.
 // `CellProvider` can be renamed, but `getCell` cannot.
 interface CellProvider {
     function getCell(bytes32 txHash, uint32 index) external returns (Cell memory cell);
@@ -32,6 +32,7 @@ contract CellProviderContract {
     }
 }
 ```
+
 For more details, please see [here](https://github.com/felicityin/axon-get-cell/blob/main/contracts/CellProviderContract.sol).
 
 ## Synchronizing CKB Cells To Axon: A Flow Overview
@@ -70,7 +71,8 @@ The workflow can be summarized as follows:
 The IBC Relayer sends ETH transactions to Axon, which packs CKB cells.
 
 To view the transaction details, let's examine the [definition](https://github.com/axonweb3/axon/blob/main/core/executor/src/system_contract/image_cell/contract/contracts/ImageCell.sol) of ICSC.
-```
+
+```solidity
 contract ImageCell {
     function update(
         CkbType.OutPoint[] calldata inputs,
@@ -83,6 +85,7 @@ contract ImageCell {
     ) public view {}
 }
 ```
+
 - `update()` : update the ICSC MPT with data relayed from CKB, including block headers and cells.
     - `inputs` : cells consumed in CKB, also need to be marked as consumed in the ICSC MPT.
     - `outputs` : cells created in CKB, also need to be saved in the ICSC MPT.
@@ -102,7 +105,8 @@ Take `[hardhat](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts
 2. Generate type-safe bindings from Ethereum contract ABI using the `[abigen](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html)` macro, or the `[Abigen` builder](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html).
 
 With the Rust binding to contract `ImageCell`, we can decode transaction data, as shown in the following example:
-```
+
+```rust
 fn exec_<B: Backend + ApplyBackend>(&self, backend: &mut B, tx: &SignedTransaction) -> TxResp {
         let tx = &tx.transaction.unsigned;
         let tx_data = tx.data();
@@ -121,7 +125,8 @@ The data storage format for CKB cell is as follows:
 | OutPoint (36 Bytes) | CellInfo (Bytes) |
 - key: 32 bytes tx hash + 4 bytes output index (u32 as little endian bytes)
 - value: CellInfo
-```
+
+```rust
 struct CellInfo {
     pub cell_output:     Bytes, // ckb_types::packed::CellOutput
     pub cell_data:       Bytes,
