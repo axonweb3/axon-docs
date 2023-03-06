@@ -8,7 +8,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # Image Cell System Contract
 
-Common Knowledge Base (CKB) is the base layer of Nervos, a multi-layered blockchain network; Axon is a 100% EVM-compatible, high-performance layer 2 framework built on top of CKB. CKB [cells](https://docs.nervos.org/docs/reference/cell/) serve as the basic units for data storage, including smart contracts. Being able to access CKB cells could significantly improve Axon's interoperability.
+Common Knowledge Base (CKB) is the base layer of Nervos, a multi-layered blockchain network; Axon is a 100% EVM-compatible, high-performance Layer 2 framework built on top of CKB. CKB [cells](https://docs.nervos.org/docs/reference/cell/) serve as the basic units for data storage, including smart contracts. Being able to access CKB cells could significantly improve Axon's interoperability.
 
 So, how to access CKB cells on Axon? One option is to connect to CKB every time to locate cells. However, this approach is not optimal as it decreases throughput due to network latency and the time-consuming cell indexing process. Instead, Axon maintains a system contract [^1] to store the required CKB cells only, so that applications on Axon can access CKB cells through this contract. Since it functions similarly to creating an image of CKB cells, this contract is named **Image Cell System Contract**, or **ICSC** for short.
 
@@ -39,36 +39,38 @@ For more details, please see [here](https://github.com/felicityin/axon-get-cell/
 
 This section provides an overview of how CKB cells are synchronized to Axon, as shown by the red arrow in the following graph.
 
-<img src={useBaseUrl("img/for-contributors/sync ckb cells to axon.png")}/> 
+<img src={useBaseUrl("img/for-contributors/icsc flow")}/> 
 
 *Synchronizing CKB Cells to Axon*
 
 As shown above, the entire process consists of three major components.:
 
 - [Cell Emitter](https://github.com/axonweb3/emitter): responsible for sending cells from CKB to IBC Relayer and further, to Axon’s chain.
-- [IBC Relayer](https://github.com/synapseweb3/relayer)[^2]: takes care of the entire message relay, including relaying the requests from Cell Emitter to Axon and listening to Axon.
+- [Force Relay](https://github.com/synapseweb3/relayer)[^2]: takes care of the entire message relay, including relaying the requests from Cell Emitter to Axon and listening to Axon.
 - Image Cell System Contract (ICSC): a stateful contract that stores the required cells relayed from CKB.
 
 The workflow can be summarized as follows:
 
-1. Application registers the required cell format with Cell Emitter (1.1) and the chain URL with IBC Relayer (1.2).
+1. Application registers the required cell format with Cell Emitter (1.1) and the chain URL with Force Relay (1.2).
 2. Cell Emitter gets cells that match the registered format from the CKB indexer.
-3. Cell Emitter requests IBC Relayer to relay cells.
-4. IBC Relayer packages cells provided by Cell Emitter into a transaction and sends it to Axon ICSC.
+3. Cell Emitter requests Force Relay to relay cells.
+4. Force Relay packages cells provided by Cell Emitter into a transaction and sends it to Axon ICSC.
 5. ICSC decodes transaction data to extract CKB cells and stores them into the ICSC MPT (which will be discussed in the next section).
 6. Finally, application contracts can get cells from ICSC MPT (as mentioned in the previous section).
+
+This article focuses on the storage of CKB cells in Axon, that is ICSC, and will not delve into the specifics of Cell Emitter and Force Relay.
 
 ## ICSC Workflow Explained
 
  ICSC has a 3-step process for storing the cells relayed from CKB:
 
-1. Receive transactions sent by IBC Relayer
+1. Receive transactions sent by Force Relay
 2. Decode transaction data
 3. Store the decoded transaction data to ICSC MPT, and the root of ICSC MPT to EVM MPT
 
 ### Receive Transactions
 
-The IBC Relayer sends ETH transactions to Axon, which packs CKB cells.
+The Force Relay sends ETH transactions to Axon, which packs CKB cells.
 
 To view the transaction details, let's examine the [definition](https://github.com/axonweb3/axon/blob/main/core/executor/src/system_contract/image_cell/contract/contracts/ImageCell.sol) of ICSC.
 
@@ -141,4 +143,4 @@ Once the decoded transaction data is stored in the ICSC MPT, a new MPT root will
 ### Footnotes
 
 [^1]: Axon contains two types of contracts: general contracts and system contracts. The main difference is that system contracts are written in Rust only. Compared with general contracts, system contracts can invoke more system resources, such as storage. Besides, system contracts are not necessarily stored in EVM MPT, since they have their own storage space.
-[^2]: As a third-party component, IBC Relayer is decentralized and trustless, so we adopted it in our project.
+[^2]: Force Relay is a decentralized and trustless relayer compatible with Inter-Blockchain Communication (IBC) protocol. It is responsible for all message transmission within the CKB ecosystem.
