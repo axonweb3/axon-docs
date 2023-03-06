@@ -113,6 +113,7 @@ fn exec_<B: Backend + ApplyBackend>(&self, backend: &mut B, tx: &SignedTransacti
 
     match image_cell_abi::ImageCellCalls::decode(tx_data) {}
     ...
+}
  ```
  ### Store Transaction Data
 
