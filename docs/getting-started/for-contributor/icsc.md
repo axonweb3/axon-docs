@@ -143,4 +143,4 @@ Once the decoded transaction data is stored in the ICSC MPT, a new MPT root will
 ### Footnotes
 
 [^1]: Axon contains two types of contracts: general contracts and system contracts. The main difference is that system contracts are written in Rust only. Compared with general contracts, system contracts can invoke more system resources, such as storage. Besides, system contracts are not necessarily stored in EVM MPT, since they have their own storage space.
-[^2]: Force Relay is a decentralized and trustless relayer compatible with Inter-Blockchain Communication (IBC) protocol. It is responsible for all message transmission within the CKB ecosystem.
+[^2]: Force Relay is a decentralized and trustless Relayer compatible with Inter-Blockchain Communication (IBC) protocol. It is responsible for all message transmission within the CKB ecosystem.
