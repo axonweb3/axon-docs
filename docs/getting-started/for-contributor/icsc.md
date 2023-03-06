@@ -95,11 +95,11 @@ As mentioned earlier, ICSC has built a separate MPT to save space in the EVM MPT
 The `ImageCell` is only used for generating Rust bindings to parse transaction data. This will be explained further in the next section.
 
 ### Decode Transaction Data
-After receiving the transactions sent by the IBC Relayer, ICSC needs to decode the transaction data. As mentioned in the previous section, ICSC is implemented in Rust, so the transaction data needs to be decoded into [Rust structs](https://doc.rust-lang.org/std/keyword.struct.html). You can use either the `[abigen](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html)` macro or the `[Abigen` builder](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html) to generate type-safe bindings to the contract `ImageCell`. 
+After receiving the transactions sent by the IBC Relayer, ICSC needs to decode the transaction data. As mentioned in the previous section, ICSC is implemented in Rust, so the transaction data needs to be decoded into [Rust structs](https://doc.rust-lang.org/std/keyword.struct.html). You can use either the [`abigen`](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html) macro or the [`Abigen builder`](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html) to generate type-safe bindings to the contract `ImageCell`. 
 
-1. Generate Ethereum contract ABI (Application Binary Interface) using `[hardhat](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts)` or `[solc](https://docs.soliditylang.org/en/latest/installing-solidity.html)`. 
-Take `[hardhat](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts)` as the example, after compiling the contracts, an ABI will be generated automatically and saved in the file `artifacts/contracts/ImageCell.sol/ImageCell.json`. Open the file and find the key `abi`, whose value is what we need.
-2. Generate type-safe bindings from Ethereum contract ABI using the `[abigen](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html)` macro, or the `[Abigen` builder](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html).
+1. Generate Ethereum contract ABI (Application Binary Interface) using [`hardhat`](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts) or [`solc`](https://docs.soliditylang.org/en/latest/installing-solidity.html). 
+Take [`hardhat`](https://hardhat.org/hardhat-runner/docs/guides/compile-contracts) as the example, after compiling the contracts, an ABI will be generated automatically and saved in the file `artifacts/contracts/ImageCell.sol/ImageCell.json`. Open the file and find the key `abi`, whose value is what we need.
+2. Generate type-safe bindings from Ethereum contract ABI using the [`abigen`](https://docs.rs/ethers-contract/0.2.2/ethers_contract/macro.abigen.html) macro, or the [`Abigen builder`](https://docs.rs/ethers-contract/0.2.2/ethers_contract/struct.Abigen.html).
 
 With the Rust binding to contract `ImageCell`, we can decode transaction data, as shown in the following example:
 ```
