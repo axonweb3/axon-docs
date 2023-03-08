@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkaxon_docs=self.webpackChunkaxon_docs||[]).push([[898],{6581:t=>{t.exports=JSON.parse('{"title":"Getting Started","slug":"/category/getting-started","permalink":"/category/getting-started","navigation":{"previous":{"title":"Why Build With Axon","permalink":"/"},"next":{"title":"For DApp Devs","permalink":"/category/for-dapp-devs"}}}')}}]);
