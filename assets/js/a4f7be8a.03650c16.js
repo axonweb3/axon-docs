@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkaxon_docs=self.webpackChunkaxon_docs||[]).push([[750],{6966:t=>{t.exports=JSON.parse('{"title":"API","slug":"/category/api","permalink":"/category/api","navigation":{"previous":{"title":"System Contracts","permalink":"/contract/system_contacts"},"next":{"title":"Latest Version","permalink":"/api/latest_version"}}}')}}]);
