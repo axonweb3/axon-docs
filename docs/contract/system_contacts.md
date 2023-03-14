@@ -314,8 +314,6 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 </details>
 
-</details>
-
 ### CKB Light Client
 
 #### Address
