@@ -25,7 +25,10 @@ Axon is a Proof-of-Stake (Pos) framework that enables developers to build app-ch
 - Metadata: The essential information about Axon, such as the list of validators and consensus configuration. Metadata is stored in metadata cell in CKB and is updated at the start of each epoch.
 - Period: A preset interval after which one of the validators must submit the latest Axon state to CKB.
 - Quorum: the max number of Axon validators in an epoch.
-- [Type/Lock Script](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md#42-cell): Two kinds of scripts, type and lock, that are executed in CKB-VM. A`type` script is executed  when a cell is created in a transaction output, to guarantee that the state in the cell is valid under specific rules. A`lock` script is executed when the cell is referenced by a transaction input, to make sure the user has appropriate permissions to update or transfer the cell. If the execution of the lock script returns true, the user is allowed to transfer the cell or update its data according to validation rules that are specified by the `type` script.
+- [Type/Lock Script](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md#42-cell): Two kinds of scripts, type and lock, that are executed in CKB-VM. 
+  - A `type` script is executed when a cell is created in a transaction output, to guarantee that the state in the cell is valid under specific rules. 
+  - A `lock` script is executed when the cell is referenced by a transaction input, to make sure the user has appropriate permissions to update or transfer the cell. 
+  - If the execution of the `lock` script returns true, the user is allowed to transfer the cell or update its data according to validation rules that are specified by the `type` script.
 
 ## Participants
 - Delegator: Participants who delegate their tokens to stakers they choose, to increase the latter’s chance to be selected as the validators.
