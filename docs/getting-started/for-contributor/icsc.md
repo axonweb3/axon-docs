@@ -14,6 +14,11 @@ So, how to access CKB cells on Axon? One option is to connect to CKB every time 
 
 As an EVM-compatible chain, Axon utilizes the [EVM MPT](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/), a Modified Merkle Patricia Trie, to provide a persistent data structure for storing all (key, value) bindings. Additionally, ICSC has built a separate MPT, known as ICSC MPT, to save the space in the EVM MPT. Simply leave the root of ICSC MPT in the EVM MPT.
 
+:::tip
+Before proceeding, we recommend reading the following pieces to fully grasp this article, as they provide prerequisite knowledge:
+- [Axon Fundamentals](https://docs.axonweb3.io/fundamentals)
+:::
+
 ## Developer Tutorial: Accessing CKB Cells Stored in ICSC
 
 Axon application developers can access CKB cells already stored in ICSC by using a precompiled contract located at address 0xf0. The usage is as follows.
