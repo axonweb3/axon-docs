@@ -22,8 +22,7 @@ The purpose of this article is to introduce the basics of Axon's storage module 
 
 Axon storage module ([GitHub repo](https://github.com/axonweb3/axon/tree/dc9de2220a42d61ed2b4e6624ef5faf6a64a6223/core/storage)) is used to store persistent data.
 
-<img src={useBaseUrl("img/for-contributors/Fig2 storage module design.png")}/>
-
+<img src={useBaseUrl("img/for-contributors/storage new fig 1 overrall architecture .png")}/>
 <p class="axon-anno">Figure 2. The design of Axon’s storage module and other related components</p>
 
 Storage module connects memory or databases through the adapter pattern, as shown in the diagram above. This adapter plays a central role in data decoupling. First, it decouples Axon from other databases. When new databases are added, you only need to implement their corresponding traits. As soon as they are abstracted into a trait, other Axon modules can interact with Axon's database. 
@@ -36,7 +35,7 @@ Find traits in: `protocol/src/traits/storage.rs`; find the implementation in `co
 
 The storage folder (location:`core/storage/src`) contains the folder adapter and four files: cache.rs, libs.rs, hash_key.rs, schema.rs.
 
-<img src={useBaseUrl("img/for-contributors/Fig. file structure.png")} width="30%"/>
+<img src={useBaseUrl("img/for-contributors/storage new fig 2.png")} width="30%"/>
 
 ### Folder adapter
 
