@@ -6,6 +6,8 @@ sidebar_position: 6
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
+# Executor
+
 Executor is a module under the core module which executes block transactions on the Axon chain. The Executor contains the implementation of [Precompiled Contracts](https://docs.axonweb3.io/category/contract-info) and [System Contracts](https://docs.axonweb3.io/contract/system_contacts). It also stores the metadata, CKB headers, [Image Cells](https://docs.axonweb3.io/getting-started/for-contributor/system_contract/image_cell) etc. The Executor can execute transactions for axon system contracts or any EVM compatible contracts on Axon. The application binary interface (ABI) of Metadata, CKB Light Client and Image Cells is defined in Solidity inside another module called “Builtin Contracts”. For each system contract except Native Token, there is a corresponding precompiled contract. The overall architecture is shown below.
 
 <img src={useBaseUrl("img/for-contributors/Executor overall architecture.png")}/>
