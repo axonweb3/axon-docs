@@ -88,7 +88,7 @@ The address of the  WCKB (Wrapped CKB) ERC20 contract that represents the cross-
   An array containing the list of bootstrap nodes.
  | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Vec<> | - | - |  False  |
+| Vec\<String\> | - | - |  False  |
   
 ### listening_address
   The listening address.
