@@ -245,7 +245,7 @@ The maximum number of transactions in a chunk when synchronizing transactions.
   The address to send tracing span.
    | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| SocektAddr | - | - |  True  |
+| SocketAddr | - | - |  True  |
   
 ### tracing_batch_size (Optional)
   The size of tracing batch.
@@ -258,4 +258,4 @@ The maximum number of transactions in a chunk when synchronizing transactions.
   The Prometheus listening port.
    | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| SocektAddr | - | - |  true  |
+| SocketAddr | - | - |  true  |
