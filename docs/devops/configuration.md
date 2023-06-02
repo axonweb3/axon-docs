@@ -251,11 +251,11 @@ The maximum number of transactions in a chunk when synchronizing transactions.
   The size of tracing batch.
   | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Uint | - | - |  true  |
+| Uint | - | - |  True  |
   
 ## Prometheus (Optional)
 ### listening_address (Optional)
   The Prometheus listening port.
    | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| SocketAddr | - | - |  true  |
+| SocketAddr | - | - |  True  |
