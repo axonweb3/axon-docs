@@ -277,3 +277,4 @@ Privkey
 privkey
 crosschain
 ws
+InitialAccount
