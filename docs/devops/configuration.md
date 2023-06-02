@@ -212,7 +212,7 @@ The maximum number of transactions in a chunk when synchronizing transactions.
 | HashMap\<String, String\> | - | - |  True  |
 
 ```toml
-  modules_level = { "overlord::state::process" = "debug", core_consensus = "error" }
+modules_level = { "overlord::state::process" = "debug", core_consensus = "error" }
 ```
 
 ## Rocksdb
