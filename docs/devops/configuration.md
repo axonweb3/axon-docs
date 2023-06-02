@@ -209,7 +209,7 @@ The maximum number of transactions in a chunk when synchronizing transactions.
   The log output level defined by module.
     | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| HashMap<String, String> | - | - |  True  |
+| HashMap\<String, String\> | - | - |  True  |
 
 ```toml
   modules_level = { "overlord::state::process" = "debug", core_consensus = "error" }
