@@ -12,7 +12,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 Account is a list that includes the addresses and amount of tokens initially allocated. The value of each node has must be consistent.
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Vec\<InitialAccount> | - | - |  False  |
+| Vec\<InitialAccount\> | - | - |  False  |
 
   Example:
 ```toml
