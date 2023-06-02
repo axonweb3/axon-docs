@@ -54,7 +54,7 @@ The address of the  WCKB (Wrapped CKB) ERC20 contract that represents the cross-
   
 ### max_payload_size
   The maximum payload size for RPC requests, primarily for limiting the `send_rawTransaction` interface. Recommended value is 1MB.
-     | Value Type| Default Value| Unit | Optional |
+| Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | Uint | 1MB | Byte |  False  |
   
@@ -105,19 +105,19 @@ The address of the  WCKB (Wrapped CKB) ERC20 contract that represents the cross-
   
 ### ping_interval
   The interval of the timed ping-pong messages of the protocol.
-     | Value Type| Default Value| Unit | Optional |
+| Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | Uint | 15 | s |  True  |
   
 ### rpc_timeout
   The timeout duration of RPC requests.
-   | Value Type| Default Value| Unit | Optional |
+| Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | Uint | 10 | s |  True  |
   
 ### selfcheck_interval
   The self-check interval of the maximum number of inbound P2P network connections.
-   | Value Type| Default Value| Unit | Optional |
+  | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | Uint | 35 | - |  True  |
   
@@ -150,14 +150,14 @@ The address of the  WCKB (Wrapped CKB) ERC20 contract that represents the cross-
 ## Executor
 ### triedb_cache_size
   The size of the trie database cache. Recommended value is 500 or higher. Larger value consumes more memory.
-  | Value Type| Default Value| Unit | Optional |
+| Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | Uint | - | - | False  |
 
 ## Consensus
 ### sync_txs_chunk_size
 The maximum number of transactions in a chunk when synchronizing transactions.
-  | Value Type| Default Value| Unit | Optional |
+| Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | Uint | 500 | - |  True  |
   
@@ -172,7 +172,7 @@ The maximum number of transactions in a chunk when synchronizing transactions.
   The maximum size of log files. 1GB by default.
    | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Uint | 1024*1024*1024 | Byte |  True  |
+| Uint | 1024\*1024\*1024 | Byte |  True  |
   
 ### filter
   The level of log output.
@@ -198,7 +198,6 @@ The maximum number of transactions in a chunk when synchronizing transactions.
 | --------- | ------------ | ---- | -------- |
 | Bool | True | - |  True  |
   
-  
 ### metrics
   Whether to enable metrics.
    | Value Type| Default Value| Unit | Optional |
@@ -206,8 +205,8 @@ The maximum number of transactions in a chunk when synchronizing transactions.
 | Bool | True | - |  True  |
   
 ### modules_level
-  The log output level defined by module.
-    | Value Type| Default Value| Unit | Optional |
+  The log output level defined by module.  
+| Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | HashMap\<String, String\> | - | - |  True  |
 
@@ -224,19 +223,19 @@ modules_level = { "overlord::state::process" = "debug", core_consensus = "error"
   
 ### cache_size
  The cache size for each column family. Larger value consumes more memory. Recommended to be 50 or higher.
-    | Value Type| Default Value| Unit | Optional |
+  | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | Uint | 100 | - |  True  |
   
 ### options_file
   The path to the RocksDB configuration file. It is recommended to use the provided configuration file.
-    | Value Type| Default Value| Unit | Optional |
+  | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | String | - | - |  True  |
 
 ## Jaeger (Optional)
 ### service_name (Optional)
-  The name of service.
+The name of service.
    | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
 | String | - | - |  True  |
