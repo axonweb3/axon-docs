@@ -13,7 +13,7 @@ Account is a list that includes the addresses and amount of tokens initially all
 
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Vec\<InitialAccount\> | - | - |  False  |
+| Vec<InitialAccount> | - | - |  False  |
 
   Example:
 ```toml
@@ -100,7 +100,7 @@ An array containing the list of bootstrap nodes.
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Vec\<String\> | - | - |  False  |
+| Vec<String> | - | - |  False  |
   
 ### listening_address
 The listening address.
@@ -136,7 +136,7 @@ The self-check interval of the maximum number of inbound P2P network connections
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Uint | 35 | - |  True  |
+| Uint | 35 | s |  True  |
   
 
 ## Mempool
@@ -239,7 +239,9 @@ The log output level defined by module.
 
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| HashMap\<String, String\> | - | - |  True  |
+| HashMap<String, String> | - | - |  True  |
+
+For example:
 
 ```toml
 modules_level = { "overlord::state::process" = "debug", core_consensus = "error" }
