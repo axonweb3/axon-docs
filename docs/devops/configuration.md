@@ -13,7 +13,7 @@ Account is a list that includes the addresses and amount of tokens initially all
 
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Vec<InitialAccount> | - | - |  False  |
+| Vec<InitialAccount\> | - | - |  False  |
 
   Example:
 ```toml
@@ -100,7 +100,7 @@ An array containing the list of bootstrap nodes.
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| Vec<String> | - | - |  False  |
+| Vec<String\> | - | - |  False  |
   
 ### listening_address
 The listening address.
@@ -239,7 +239,7 @@ The log output level defined by module.
 
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
-| HashMap<String, String> | - | - |  True  |
+| HashMap<String, String\> | - | - |  True  |
 
 For example:
 
