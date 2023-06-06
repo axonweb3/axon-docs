@@ -44,7 +44,7 @@ The path for data storage.
   
 ### privkey
 
-The private key for the HTTP listening port node, used for handshake and message signing. Privkey can be directly written in the configuration file or read from an environment variable. For instance, `privkey = "A"` refers to the privkey fetches its value from Environment Variable A.
+The private key for the HTTP listening port node, used for handshake and message signing. Privkey can be directly written in the configuration file or read from an environment variable. For instance, `privkey = A` refers to the privkey fetches its value from Environment Variable A.
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
@@ -126,7 +126,7 @@ The maximum gas limit allowed for RPC.
 
 ### bootstraps
 
-An array containing the [multiaddr](https://multiformats.io/multiaddr/) of bootstrap nodes. A [peer ID](https://github.com/multiformats/multibase) is required for each multiaddr, which is `sha256(pub_key)` with [base58](https://crates.io/crates/bs58) encoding. 
+An array containing the [multiaddr](https://multiformats.io/multiaddr/) of bootstrap nodes. A [peer ID](https://github.com/multiformats/multibase) is required for each multiaddr, which is `sha256(pub_key)` with [base58](https://en.wikipedia.org/wiki/Binary-to-text_encoding#Base58) encoding. 
   
 | Value Type| Default Value| Unit | Optional |
 | --------- | ------------ | ---- | -------- |
