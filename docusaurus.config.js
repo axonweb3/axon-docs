@@ -9,7 +9,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/axon.png',
+  favicon: 'img/axon.svg',
   organizationName: 'nervosnetwork', // Usually your GitHub org/user name.
   projectName: 'axon-docs', // Usually your repo name.
   i18n: {
@@ -37,6 +37,10 @@ const config = {
         },
       }),
     ],
+  ],
+
+  stylesheets: [
+    'https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800&display=swap',
   ],
 
   scripts: [
@@ -88,12 +92,12 @@ const config = {
             ],
           }
         ],
-        copyright: 'This website is maintained by Axonweb3.',
+        copyright: 'This website is maintained by AxonWeb3.',
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['rust'],
+        additionalLanguages: ['rust', 'solidity', 'toml', 'yaml'],
       },
     }),
 };

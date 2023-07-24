@@ -50,10 +50,11 @@
 /* font-size */
 body {
   font-family: Montserrat, serif !important;
+  text-rendering: auto;
   font-size: 16px;
 }
 
-.markdown:not(:has(#homepage)) a {
+.markdown a:not(.hash-link) {
   text-decoration: underline;
   color: #2d76ba;
 }
@@ -92,7 +93,6 @@ strong {
 }
 
 em {
-  font-size: 10px;
   font-style: italic;
   font-weight: 600;
 }
@@ -351,7 +351,8 @@ main > div.container > div.row > div:nth-child(2) {
 }
 
 .navbar__logo {
-  margin: 0 7px 4px 7px;
+  margin: -4px 0 0 0;
+  height: 55px;
 }
 
 .navbar__items--right {
