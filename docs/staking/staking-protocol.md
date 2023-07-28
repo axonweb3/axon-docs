@@ -51,7 +51,7 @@ The kicker is pivotal in maintaining the integrity and smoothness of network ope
 - Delegate Threshold (per validator): the minimum amount of delegated tokens that a staker accepts from each delegator. It is set by the staker.
 
 ## Overview
-<img src={useBaseUrl("static/img/staking/Staking protocol overview.png")} style={{ maxHeight: '800px', display: 'block', margin: '0 auto', }} />
+<img src={useBaseUrl("img/staking/Staking protocol overview.png")} style={{ maxHeight: '800px', display: 'block', margin: '0 auto', }} />
 
 The entire protocol can be divided into six sub-protocols according to their functionalities: initiation, staking, delegation, validator selection, checkpoint recording, and reward distribution. Initiation is executed only at the beginning of the protocol’s lifecycle, while the other five are carried out continuously and repeatedly.
 
@@ -85,7 +85,7 @@ Upon the completion of each epoch, validators are entitled to receive rewards fo
 
 Since validators from epoch `n` still possess the staked tokens, the candidate set for epoch `n+1` is composed of both the validators from epoch `n` and stakers who newly joined in epoch `n-1`. To select the validators for epoch `n+1`, candidates are sorted based on their staked amounts. Stakers with the top quorum from this sorted list are chosen as validators for epoch `n+1`, and their updated validator statuses are recorded on-chain. The staked tokens of the remaining non-selected candidates are promptly returned, allowing them to withdraw and re-stake later. If the number of candidates is less than the required quorum, all candidates automatically become validators for epoch `n+1`. Smooth chain operation can be thus ensured even in such cases.
 
-<img src={useBaseUrl("static/img/staking/staking protocol validator selection.png")} style={{ maxHeight: '800px', display: 'block', margin: '0 auto', }} />
+<img src={useBaseUrl("img/staking/staking protocol validator selection.png")} style={{ maxHeight: '800px', display: 'block', margin: '0 auto', }} />
 
 This meticulous selection process guarantees the presence of a set of reliable validators for each epoch, enhancing the stability and integrity of the system while allowing for efficient participation and token management for the participants.
 
