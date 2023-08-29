@@ -62,7 +62,7 @@ sudo docekr-compose up -d
 http://xxxx:4020
 ```
 
-<img alt="Untitled" src={useBaseUrl("Axon Faucet interface.png")}  width="80%"/>
+<img alt="Untitled" src={useBaseUrl("Axon Explorer interface.png")}  width="80%"/>
 
 
 
