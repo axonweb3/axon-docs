@@ -337,3 +337,5 @@ blockscan
 devnet
 cURL
 Postgres
+Blockscout
+blockscout
