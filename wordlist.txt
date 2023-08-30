@@ -339,3 +339,4 @@ cURL
 Postgres
 Blockscout
 blockscout
+BlockScan
