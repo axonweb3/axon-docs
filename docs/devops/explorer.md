@@ -63,9 +63,3 @@ http://xxxx:4020
 ```
 
 <img alt="Untitled" src={useBaseUrl("Axon Explorer interface.png")}  width="80%"/>
-
-
-
-
-
-🛠 This page is a work in progress. 🚧
