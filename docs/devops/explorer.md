@@ -7,35 +7,25 @@ sidebar_position: 4
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # Explorer
-BlockScan is a explorer for ETH compatible chain like [Axon](https://github.com/nervosnetwork/axon) Side Chain which is a layer2 network build on [Nervos Network](https://www.nervos.org/) [CKB](https://github.com/nervosnetwork/ckb)
+Axon uses [BlockScan](https://github.com/Magickbase/blockscan), an explorer tailored for Ethereum-compatible chains. By deploying BlockScan, you can access data from Axon-based chains and monitor their status.
 
-You can deploy explorer to query information on the axon chain and observe the status of the axon chain
+## Deployment
 
+Docker Compose is the current deployment method.
 
+### Docker Compose
 
-### Deployment
-
-#### More diverse deployment methods, gradually developed
-
-#### Docker-compose
-
-#####  1. Clone blockscan to target machine
+1. Clone BlockScan repository to your target machine:
 
 ``` shell
 git clone https://github.com/Magickbase/blockscan.git
 cd blockscan
 ```
 
-
-
-##### 2. Edit the config config
-
-- blockscan/dev.env
+2. Edit the config file located at `- blockscan/dev.env`. Make the following adjustments:
 
 ```shell
 ETHEREUM_JSONRPC_VARIANT=geth
-
-
 ETHEREUM_JSONRPC_HTTP_URL=https://axon1.layerview.io/
 # Http address of axon rpc
 ETHEREUM_JSONRPC_TRACE_URL=https://axon1.layerview.io/
@@ -45,21 +35,18 @@ DATABASE_URL=postgresql://postgres:postgres123@db:5432/blockscan?ssl=false
 
 ```
 
-
-
-##### 3. Execute one-click deployment
+3. Execute one-click deployment:
 
 ```shell
 cd ./bolockscan
 sudo docekr-compose up -d
 ```
 
-
-
-##### 4. Access explorer
+4. Access the explorer at:
 
 ```shell
 http://xxxx:4020
+#  Replace this address with the actual URL where your BlockScan explorer is deployed
 ```
 
 <img alt="Untitled" src={useBaseUrl("Axon Explorer interface.png")}  width="80%"/>
