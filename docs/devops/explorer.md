@@ -45,7 +45,7 @@ sudo docekr-compose up -d
 4. Access the explorer at:
 
 ```shell
-http://xxxx:4020
+http://127.0.0.1:4020
 #  Replace this address with the actual URL where your BlockScan explorer is deployed
 ```
 
