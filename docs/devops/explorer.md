@@ -27,15 +27,15 @@ cd blockscan
 
 ```shell
 ETHEREUM_JSONRPC_VARIANT=geth
+# Http address of axon rpc,The default port is port 8000 of the host 
+# Please change to your own axon rpc address port
 ETHEREUM_JSONRPC_HTTP_URL=http://host.docker.internal:8000
 # Http address of axon rpc,The default port is port 8000 of the host 
 # Please change to your own axon rpc address port
 ETHEREUM_JSONRPC_TRACE_URL=http://host.docker.internal:8000
-# Http address of axon rpc,The default port is port 8000 of the host 
-# Please change to your own axon rpc address port
-DATABASE_URL=postgresql://postgres:postgres123@db:5432/blockscan?ssl=false
 # The default is the postgresql address deployed in docker-compose
 # If you have your own postgresql, change it
+DATABASE_URL=postgresql://postgres:postgres123@db:5432/blockscan?ssl=false
 
 ```
 
