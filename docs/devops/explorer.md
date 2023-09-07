@@ -23,15 +23,19 @@ cd blockscan
 ```
 
 2. Edit the config file located at `- blockscan/dev.env`. Make the following adjustments:
+   - The purpose of the dev.env file is to enable explorer to connect to your locally existing components, but if the axon node and explorer are in the same machine, you can also deploy directly using our docker-compose without any problems
 
 ```shell
 ETHEREUM_JSONRPC_VARIANT=geth
-ETHEREUM_JSONRPC_HTTP_URL=https://axon1.layerview.io/
-# Http address of axon rpc
-ETHEREUM_JSONRPC_TRACE_URL=https://axon1.layerview.io/
-# Http address of axon rpc
+ETHEREUM_JSONRPC_HTTP_URL=http://host.docker.internal:8000
+# Http address of axon rpc,The default port is port 8000 of the host 
+# Please change to your own axon rpc address port
+ETHEREUM_JSONRPC_TRACE_URL=http://host.docker.internal:8000
+# Http address of axon rpc,The default port is port 8000 of the host 
+# Please change to your own axon rpc address port
 DATABASE_URL=postgresql://postgres:postgres123@db:5432/blockscan?ssl=false
-# DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5432/blockscan?ssl=false
+# The default is the postgresql address deployed in docker-compose
+# If you have your own postgresql, change it
 
 ```
 
