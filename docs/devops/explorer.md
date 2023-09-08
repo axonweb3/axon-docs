@@ -22,7 +22,7 @@ git clone https://github.com/Magickbase/blockscan.git
 cd blockscan
 ```
 
-2. Edit the config file located at `- blockscan/dev.env`. Make the following adjustments:
+2. Edit the config file located at `blockscan/dev.env`. Make the following adjustments:
    - The purpose of the dev.env file is to enable explorer to connect to your locally existing components, but if the axon node and explorer are in the same machine, you can also deploy directly using our docker-compose without any problems
 
 ```shell
