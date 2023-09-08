@@ -49,8 +49,8 @@ sudo docekr-compose up -d
 4. Access the explorer at:
 
 ```shell
+# Replace this address with the actual URL where your BlockScan explorer is deployed
 http://127.0.0.1:4020
-#  Replace this address with the actual URL where your BlockScan explorer is deployed
 ```
 
 <img alt="Untitled" src={useBaseUrl("Axon Explorer interface.png")}  width="80%"/>
