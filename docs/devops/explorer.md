@@ -30,7 +30,7 @@ ETHEREUM_JSONRPC_VARIANT=geth
 # Http address of axon rpc,The default port is port 8000 of the host 
 # Please change to your own axon rpc address port
 ETHEREUM_JSONRPC_HTTP_URL=http://host.docker.internal:8000
-# Http address of axon rpc,The default port is port 8000 of the host 
+# Http address of Axon RPC, defaults to port 8000 of the host
 # Please change to your own axon rpc address port
 ETHEREUM_JSONRPC_TRACE_URL=http://host.docker.internal:8000
 # The default is the postgresql address deployed in docker-compose
