@@ -18,7 +18,7 @@ Docker Compose is the current deployment method.
 1. Clone BlockScan repository to your target machine:
 
 ``` shell
-git clone https://github.com/Magickbase/blockscan.git
+git clone --depth=1 https://github.com/Magickbase/blockscan.git
 cd blockscan
 ```
 
