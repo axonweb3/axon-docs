@@ -36,7 +36,6 @@ ETHEREUM_JSONRPC_TRACE_URL=http://host.docker.internal:8000
 # The default is the postgresql address deployed in docker-compose
 # If you have your own postgresql, change it
 DATABASE_URL=postgresql://postgres:postgres123@db:5432/blockscan?ssl=false
-
 ```
 
 3. Execute one-click deployment:
