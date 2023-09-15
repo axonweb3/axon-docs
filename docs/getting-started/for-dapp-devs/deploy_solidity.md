@@ -42,7 +42,7 @@ Now you can connect Hardhat to this Axon node, for example to run a deployment s
 $ npx hardhat run scripts/deploy.ts --network axon
 
 # Result
-Lock with 0.001ETH and unlock timestamp 1694748964 deployed to 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+Lock with 0.001ETH and unlock timestamp 1694761966 deployed to 0x5FbDB2315678afecb367f032d93F642f64180aa3
 ```
 
 ## Interact With the Deployed Contract
