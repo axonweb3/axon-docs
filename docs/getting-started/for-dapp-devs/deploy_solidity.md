@@ -11,7 +11,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 ## Deploy a Solidity contract
 Given Axon’s full compatibility with the EVM, contract deployment on Axon closely resembles the process on Ethereum. You can follow the [Hardhat Getting Started](https://hardhat.org/hardhat-runner/docs/getting-started) for guidance. The only distinction is the network configuration.
 
-This document assumes that you have followed [the Axon quick start](docs/getting-started/for-dapp-devs/quick_start.md) to run an Axon node.
+This document assumes that you have followed [the Axon quick start](./quick_start.md) to run an Axon node.
 
 When the project is created by `npx hardhat`, you just need to edit the [hardhat.config.ts](https://hardhat.org/hardhat-runner/docs/config) file as follows:
 
