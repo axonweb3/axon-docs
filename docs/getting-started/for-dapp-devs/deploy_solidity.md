@@ -13,7 +13,7 @@ Given Axon’s full compatibility with the EVM, contract deployment on Axon clos
 
 This document assumes that you have followed [the Axon quick start](./quick_start.md) to run an Axon node.
 
-When the project is created by `npx hardhat`, you just need to edit the [hardhat.config.ts](https://hardhat.org/hardhat-runner/docs/config) file as follows:
+Once your project is created using `npx hardhat`, you just need to edit the [hardhat.config.ts](https://hardhat.org/hardhat-runner/docs/config) file as follows:
 
 ```javascript
 import { HardhatUserConfig } from "hardhat/config";
@@ -37,7 +37,7 @@ const config: HardhatUserConfig = {
 export default config;
 ```
 
-Now you can connect Hardhat to this Axon node, for example to run a deployment script against it, you simply need to run it using `--network axon`:
+With these configurations in place, now you can connect Hardhat to this Axon node. For example, to run a deployment script against it, simply run the script using `--network axon`:
 ```shell
 $ npx hardhat run scripts/deploy.ts --network axon
 
