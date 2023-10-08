@@ -73,7 +73,7 @@ In Axon’s repository, the Genesis accounts and their associated funds are conf
 
 For example, the private key `0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80`, which corresponds to the address `0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266`, is derived from the mnemonic phrase `test test test test test test test test test test test junk` for the first account. This mnemonic phrase is consistent with [the one used for the initialization of the Hardhat Network](https://hardhat.org/hardhat-network/docs/reference#initial-state).
 
-The account and the balance will be displayed once the account is added. This Genesis account holds 100,000,000,000,000 AXON, as configured in [`devtools/chain/specs/single_node/chain-spec.toml`](https://github.com/axonweb3/axon/blob/6fe5777e0b4a9b994dc84a56a00005745fd05085/devtools/chain/specs/single_node/chain-spec.toml#L20).
+The account and the balance will be displayed once the private key is added. This Genesis account holds 100,000,000,000,000 AXON, as configured in [`devtools/chain/specs/single_node/chain-spec.toml`](https://github.com/axonweb3/axon/blob/6fe5777e0b4a9b994dc84a56a00005745fd05085/devtools/chain/specs/single_node/chain-spec.toml#L20).
 
 <img alt="Untitled 1" src={useBaseUrl("img/for-dapp-devs/send-transactions-on-axon-via-metamask/Untitled 1.png")}  width="50%"/>
 
