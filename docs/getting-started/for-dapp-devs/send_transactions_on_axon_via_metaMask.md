@@ -16,11 +16,7 @@ This guide provides instructions for sending transactions on Axon via MetaMask a
 
 ### 1.1 Local Setup
 
-[Download Axon](https://github.com/axonweb3/axon), find <b>Compile</b> in <b>README</b>, and run the following commands to start the node:
-
-```bash
-target/release/axon run --config devtools/chain/config.toml
-```
+This document assumes that you have followed [the Axon quick start](./quick_start.md) to run an Axon node.
 
 Once the node has been successfully set up, you will notice that the block height is increasing, for instance: 
 
