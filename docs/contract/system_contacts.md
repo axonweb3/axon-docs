@@ -449,7 +449,7 @@ The Image Cell Contract stores the CKB Layer 1 cells in Axon, allowing applicati
 ### Address
 
 ```
-0x10000000000000000004
+0xffffffffffffffffffffffffffffffffffffff04
 ```
 
 ### ABI
