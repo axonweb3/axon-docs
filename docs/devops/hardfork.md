@@ -68,7 +68,7 @@ Currently, Axon has only one hardfork named `Andromeda`. The name of the hardfor
 
 3. Enable hardfork
 
-      `hardfork.sh` enables the hardfork by [default after 30 blocks](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/hardfork.sh#L18).
+      [`hardfork.sh`](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/hardfork.sh) enables the hardfork by [default after 30 blocks](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/hardfork.sh#L18).
 
       `hardfork.sh`  first kills all nodes. While the nodes are stopped, it executes `hardfork -c` to specify the `hardfork-start-number`. The nodes are then restarted. After startup, the status of `Andromeda` can be checked using `axon_getHardforkInfo`, and the expected status value should be `determined`.
 
