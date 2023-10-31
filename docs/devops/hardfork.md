@@ -1,12 +1,13 @@
 # Hardfork
 
-## introduction
+Axon empowers developers to initiate hardforks. The currently available hardfork, Andromeda, takes its name from one of the 88 constellations. The upcoming hardforks on Axon will follow [this order of the constellations](https://en.wikipedia.org/wiki/IAU_designated_constellations#List). 
 
-Currently, Axon has only one hardfork named `Andromeda`. The name of the hardfork is derived from one of the 88 constellations, and in the future, names will continue to be chosen based on the [order of the constellations](https://en.wikipedia.org/wiki/IAU_designated_constellations#List). After enabling `Andromeda`, validators are allowed to modify the `max_contract_limit` through [the system contract `0xffffffffffffffffffffffffffffffffffffff01`](https://docs.axonweb3.io/contract/system_contacts/#metadata). If the hardfork is not activated, only the `max_contract_limit` is immutable, while other configs remain adjustable. Axon already has [hardfork test CI](https://github.com/axonweb3/axon/blob/f9974e62924693494476560316db9f70bc650b80/.github/workflows/hardfork_test.yml)  and [a test project available](https://github.com/axonweb3/axon-hardfork-test) for your reference.
+When Andromeda is enabled, validators are allowed to modify the `max_contract_limit` through [the system contract `0xffffffffffffffffffffffffffffffffffffff01`](https://docs.axonweb3.io/contract/system_contacts/#metadata). If the hardfork is not activated, only the `max_contract_limit` is immutable, while other configs remain adjustable. Axon provides a [hardfork test CI](https://github.com/axonweb3/axon/blob/f9974e62924693494476560316db9f70bc650b80/.github/workflows/hardfork_test.yml) and [a test project](https://github.com/axonweb3/axon-hardfork-test) for your reference.
 
-## Usage steps
+## Usage Instructions
 
-1. Build Axon from source code
+### 1. Build Axon from source code
+Start to build Axon from the source code using the following commands:
 
    ```bash
    cd $your_workspace
@@ -15,11 +16,9 @@ Currently, Axon has only one hardfork named `Andromeda`. The name of the hardfor
    cargo build
    ```
 
-   
+### 2. Start multiple Axon nodes
 
-2. Start multiple Axon nodes
-
-   [`reset.sh`](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/reset.sh) is used to clear data and start axon nodes. You can also use it for the first-time startup.
+To run multiple Axon nodes, use the [`reset.sh`](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/reset.sh) script to clear data and start axon nodes. You can also use it for the first-time startup.
 
    ```bash
    git clone https://github.com/axonweb3/axon-hardfork-test.git
@@ -27,9 +26,8 @@ Currently, Axon has only one hardfork named `Andromeda`. The name of the hardfor
    bash reset.sh $your_workspace/axon
    ```
 
-   One of Axon's default configurations is [`hardforks = []`](https://github.com/axonweb3/axon/blob/f9974e62924693494476560316db9f70bc650b80/devtools/chain/specs/multi_nodes/chain-spec.toml#L10), which defaults to enabling hardfork.  `reset.sh`  changes `hardforks = []` to `hardforks = ["None"]` to disable hardfork. Later on, hardfork can be enabled using the `hardfork -c` followed by specifying the `hardfork-start-number`.
-
-    You should see an output similar to this following:
+The default configuration to enable hardfork is [`hardforks = []`](https://github.com/axonweb3/axon/blob/f9974e62924693494476560316db9f70bc650b80/devtools/chain/specs/multi_nodes/chain-spec.toml#L10). The `reset.sh` script changes `hardforks = []` to `hardforks = ["None"]` to disable hardfork. Later, you can enable hardfork using `hardfork -c` followed by specifying the `hardfork-start-number`.
+You can expect the output to resemble the following:
 
    ```
    No process found listening on port 8001
@@ -37,7 +35,7 @@ Currently, Axon has only one hardfork named `Andromeda`. The name of the hardfor
    No process found listening on port 8003
    No process found listening on port 8004
    hardforks = ["None"]
-   node_1 height: 6
+   node_1 height: 6 // `height: 6` indicates that the nodes are producing blocks without any issues. When querying with `axon_getHardforkInfo` and receiving a response of `"result": {}`, it implies that the hardfork is currently disabled.
    node_2 height: 6
    node_3 height: 6
    node_4 height: 6
@@ -63,14 +61,10 @@ Currently, Axon has only one hardfork named `Andromeda`. The name of the hardfor
    }
    ```
 
-   `height: 6` indicates that the nodes are producing blocks normally. Querying with `axon_getHardforkInfo` and receiving `"result": {}` implies that hardfork is disabled.
+### 3. Enable hardfork
 
-
-3. Enable hardfork
-
-      [`hardfork.sh`](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/hardfork.sh) enables the hardfork by [default after 30 blocks](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/hardfork.sh#L18).
-
-      `hardfork.sh`  first kills all nodes. While the nodes are stopped, it executes `hardfork -c` to specify the `hardfork-start-number`. The nodes are then restarted. After startup, the status of `Andromeda` can be checked using `axon_getHardforkInfo`, and the expected status value should be `determined`.
+Use the [`hardfork.sh`](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/hardfork.sh) script to activate the hardfork, [after 30 blocks by default](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/hardfork.sh#L18).
+The `hardfork.sh` first halts all nodes, then executes `hardfork -c` to specify the `hardfork-start-number` to restart the nodes. After restarting, you can check the status of `Andromeda` with `axon_getHardforkInfo`, where the expected status value is `determined`.
 
       ```bash
       bash hardfork.sh $your_workspace/axon	
@@ -119,46 +113,35 @@ Currently, Axon has only one hardfork named `Andromeda`. The name of the hardfor
       }
       ```
 
-      
+### 4. Wait and verify
 
-4. Wait and check hardfork info
-
-   You can use this following test case to verify if the status of `Andromeda` becomes `enabled` when the nodes reach the specified height.
+   You can verify if `Andromeda`'s status becomes `enabled` when the nodes reach the specified height, using the following test case:
 
    ```bash
    npm install
    npx hardhat test --grep "check hardfork info after hardfork"
    ```
 
-   
+### 5. Deploy a contract larger than the default `max_contract_limit`
 
-5. Deploy a contract larger than default `max_contract_limit`
-
-   The expected outcome of this test case is that the deployment transaction [returns an error message containing `CreateContractLimit`](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/test/checkMetadata.ts#L18-L25).
+Execute the following test to confirm that the deployment transaction [returns an error message containing `CreateContractLimit`](https://github.com/axonweb3/axon-hardfork-test/blob/5c9c172cc1ed1dff544f7e092f7052c314030c1d/test/checkMetadata.ts#L18-L25).
 
    ```bash
    npx hardhat test --grep "deploy a big contract larger than max_contract_limit"
    ```
 
-   
+### 6. Increase `max_contract_limit`
 
-6. Increase `max_contract_limit`
-
-   This test case increases the `max_contract_limit` by using the system contract `0xffffffffffffffffffffffffffffffffffffff01`.
+Use the system contract `0xffffffffffffffffffffffffffffffffffffff01` to increases the `max_contract_limit` with the following test:
 
    ```bash
    npx hardhat test --grep "update max_contract_limit"
    ```
 
+### 7. Test the new `max_contract_limit`
 
-
-7. Test if  new `max_contract_limit` is effective
-
-   Deploy the previous contract again, with the expectation that it will deploy successfully.
+   Deploy the previous contract again, and anticipate a successful deployment with the updated `max_contract_limit`.
 
    ```bash
    npx hardhat test --grep "deploy a big contract smaller than max_contract_limit"
    ```
-
-   
-
