@@ -136,6 +136,7 @@ struct Header {
 </details>
 
 ### GetCell
+
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
 | --- | --- | --- | --- |
 | 0x0000000000000000000000000000000000000103 | 42000 | out point | cell info |
@@ -249,7 +250,3 @@ contract CallCkbVm {
 ```
 
 </details>
-
-### VerifyInCkbVm
-
-🚧 Information updates in progress - stay tuned!
