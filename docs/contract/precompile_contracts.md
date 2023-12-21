@@ -135,6 +135,38 @@ struct Header {
 ```
 </details>
 
+#### Example
+
+<details><summary>Click here to view example</summary>
+
+```solidity
+contract GetCkbHeader {
+    event GetHeaderEvent(CKBHeader);
+    event NotGetHeaderEvent();
+
+    int8 ret;
+
+    function getHeader(bytes32 blockHash) public returns (CKBHeader memory) {
+        address get_header_addr = address(0x0102);
+        (bool isSuccess, bytes memory res) = get_header_addr.staticcall(
+            abi.encode(blockHash)
+        );
+
+        CKBHeader memory header;
+        if (isSuccess) {
+            header = abi.decode(res, (CKBHeader));
+            emit GetHeaderEvent(header);
+        } else {
+            emit NotGetHeaderEvent();
+        }
+        return header;
+    }
+}
+
+```
+
+</details>
+
 ### GetCell
 
 | ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
@@ -173,6 +205,38 @@ struct CellOutput {
     Script[] type_;
 }
 ```
+</details>
+
+#### Example
+
+<details><summary>Click here to view example</summary>
+
+```solidity
+contract GetCkbCell {
+    event GetCellEvent(OutPoint);
+    event NotGetCellEvent();
+
+    int8 ret;
+
+    function getCell(bytes32 blockHash) public returns (CellInfo memory) {
+        address get_cell_addr = address(0x0103);
+        (bool isSuccess, bytes memory res) = get_cell_addr.staticcall(
+            abi.encode(outPoint)
+        );
+
+        CellInfo memory cell;
+        if (isSuccess) {
+            cell = abi.decode(res, (CellInfo));
+            emit GetCellEvent(cell);
+        } else {
+            emit NotGetCellEvent();
+        }
+        return cell;
+    }
+}
+
+```
+
 </details>
 
 ### CallCkbVm
