@@ -10,7 +10,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 On top of a set of opcodes, EVM also offers advanced functionalities through precompiled contracts. These are special contracts bundled with EVM at fixed addresses that can be called with a determined gas. The gas is purely the contractual cost, neither the cost of the call itself nor the instructions to put the parameters in memory.
 
-Precompiled contract addresses start from 1 and increment for each contract. New hardforks may introduce new precompiled contracts. Similar to the regular contracts, new contracts are called from opcodes with instructions, such as [CALL](https://www.evm.codes/#F1). 
+Precompiled contract addresses start from 1 and increment for each contract. New hardforks may introduce new precompiled contracts. Similar to the regular contracts, new contracts are called from opcodes with instructions, such as [CALL](https://www.evm.codes/#F1).
 
 For all precompiled contracts, inputs that are shorter than expected are assumed to be virtually padded with zeros at the end, whereas any surplus bytes at the end of inputs that are longer than expected are ignored.
 
@@ -94,11 +94,85 @@ Blake2f is the compression function F used in the BLAKE2 cryptographic hashing a
 
 ### GetHeader
 
-🚧 Information updates in progress - stay tuned!
+| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
+| --- | --- | --- | --- |
+| 0x0000000000000000000000000000000000000102 | 42000 | hash | header view |
+
+Get the header of a relayed CKB block header by hash.
+
+#### Inputs
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Input {
+    bytes32 hash;
+}
+```
+
+</details>
+
+#### Output
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Header {
+    uint32 version;
+    uint32 compactTarget;
+    uint64 timestamp;
+    uint64 number;
+    uint64 epoch;
+    bytes32 parentHash;
+    bytes32 transactionsRoot;
+    bytes32 proposalsHash;
+    bytes32 extraHash;
+    bytes32 dao;
+    uint128 nonce;
+    bytes extension;
+    bytes32 blockHash;
+}
+```
+</details>
 
 ### GetCell
+| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
+| --- | --- | --- | --- |
+| 0x0000000000000000000000000000000000000103 | 42000 | out point | cell info |
 
-🚧 Information updates in progress - stay tuned!
+Get the relayed cell information by out point.
+
+#### Inputs
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct OutPoint {
+    bytes32 txHash;
+    uint32 index;
+}
+```
+
+</details>
+
+#### Output
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct CellInfo {
+    OutPoint outPoint;
+    CellOutput output;
+    bytes data;
+}
+
+struct CellOutput {
+    uint64 capacity;
+    Script lock;
+    Script[] type_;
+}
+```
+</details>
 
 ### CallCkbVm
 
