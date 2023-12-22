@@ -314,3 +314,105 @@ contract CallCkbVm {
 ```
 
 </details>
+
+### CkbBlake2b
+
+| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
+| --- | --- | --- | --- |
+| 0x0000000000000000000000000000000000000106 | 60 | data | hash |
+
+Calculate the ckb-blake2b hash.
+
+#### Inputs
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Input {
+    byte[] data;
+}
+```
+
+</details>
+
+#### Output
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Output {
+    bytes32 hash;
+}
+```
+</details>
+
+### CkbMbtVerify
+
+| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
+| --- | --- | --- | --- |
+| 0x0000000000000000000000000000000000000107 | 56000 | verify proof payload | bool |
+
+Verify the CKB merkle binary tree proof.
+
+#### Inputs
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct VerifyProofPayload {
+    uint8 verifyType;
+    bytes32 transactionsRoot;
+    bytes32 witnessesRoot;
+    bytes32 rawTransactionsRoot;
+    Proof proof;
+}
+
+struct Proof {
+    uint32[] indices;
+    bytes32[] lemmas;
+    bytes32[] leaves;
+}
+```
+If the verify_type is 0, the leaves should be in the rawTransactionsRoot, otherwise in the witnessesRoot.
+
+</details>
+
+#### Output
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Output {
+    bool ret;
+}
+```
+</details>
+
+#### Example
+
+<details><summary>Click here to view example</summary>
+
+```solidity
+contract VerifyCMBTRoot {
+    event VerifyCMBTRootEvent(bool);
+    event NotVerifyCMBTRootEvent();
+
+    int8 ret;
+
+    function verifyCMBTRoot(VerifyProofPayload payload) public returns (bool) {
+        address get_cell_addr = address(0x0107);
+        (bool isSuccess, bytes memory res) = get_cell_addr.staticcall(
+            abi.encode(payload)
+        );
+
+        if (isSuccess) {
+            emit VerifyCMBTRootEvent(isSuccess);
+        } else {
+            emit NotVerifyCMBTRootEvent();
+        }
+        return isSuccess;
+    }
+}
+```
+
+</details>
