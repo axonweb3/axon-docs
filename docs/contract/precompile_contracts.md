@@ -10,7 +10,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 On top of a set of opcodes, EVM also offers advanced functionalities through precompiled contracts. These are special contracts bundled with EVM at fixed addresses that can be called with a determined gas. The gas is purely the contractual cost, neither the cost of the call itself nor the instructions to put the parameters in memory.
 
-Precompiled contract addresses start from 1 and increment for each contract. New hardforks may introduce new precompiled contracts. Similar to the regular contracts, new contracts are called from opcodes with instructions, such as [CALL](https://www.evm.codes/#F1). 
+Precompiled contract addresses start from 1 and increment for each contract. New hardforks may introduce new precompiled contracts. Similar to the regular contracts, new contracts are called from opcodes with instructions, such as [CALL](https://www.evm.codes/#F1).
 
 For all precompiled contracts, inputs that are shorter than expected are assumed to be virtually padded with zeros at the end, whereas any surplus bytes at the end of inputs that are longer than expected are ignored.
 
@@ -94,11 +94,150 @@ Blake2f is the compression function F used in the BLAKE2 cryptographic hashing a
 
 ### GetHeader
 
-🚧 Information updates in progress - stay tuned!
+| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
+| --- | --- | --- | --- |
+| 0x0000000000000000000000000000000000000102 | 42000 | hash | header view |
+
+Get the header of a relayed CKB block header by hash.
+
+#### Inputs
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Input {
+    bytes32 hash;
+}
+```
+
+</details>
+
+#### Output
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Header {
+    uint32 version;
+    uint32 compactTarget;
+    uint64 timestamp;
+    uint64 number;
+    uint64 epoch;
+    bytes32 parentHash;
+    bytes32 transactionsRoot;
+    bytes32 proposalsHash;
+    bytes32 extraHash;
+    bytes32 dao;
+    uint128 nonce;
+    bytes extension;
+    bytes32 blockHash;
+}
+```
+</details>
+
+#### Example
+
+<details><summary>Click here to view example</summary>
+
+```solidity
+contract GetCkbHeader {
+    event GetHeaderEvent(CKBHeader);
+    event NotGetHeaderEvent();
+
+    int8 ret;
+
+    function getHeader(bytes32 blockHash) public returns (CKBHeader memory) {
+        address get_header_addr = address(0x0102);
+        (bool isSuccess, bytes memory res) = get_header_addr.staticcall(
+            abi.encode(blockHash)
+        );
+
+        CKBHeader memory header;
+        if (isSuccess) {
+            header = abi.decode(res, (CKBHeader));
+            emit GetHeaderEvent(header);
+        } else {
+            emit NotGetHeaderEvent();
+        }
+        return header;
+    }
+}
+
+```
+
+</details>
 
 ### GetCell
 
-🚧 Information updates in progress - stay tuned!
+| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
+| --- | --- | --- | --- |
+| 0x0000000000000000000000000000000000000103 | 42000 | out point | cell info |
+
+Get the relayed cell information by out point.
+
+#### Inputs
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct OutPoint {
+    bytes32 txHash;
+    uint32 index;
+}
+```
+
+</details>
+
+#### Output
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct CellInfo {
+    OutPoint outPoint;
+    CellOutput output;
+    bytes data;
+}
+
+struct CellOutput {
+    uint64 capacity;
+    Script lock;
+    Script[] type_;
+}
+```
+</details>
+
+#### Example
+
+<details><summary>Click here to view example</summary>
+
+```solidity
+contract GetCkbCell {
+    event GetCellEvent(OutPoint);
+    event NotGetCellEvent();
+
+    int8 ret;
+
+    function getCell(bytes32 blockHash) public returns (CellInfo memory) {
+        address get_cell_addr = address(0x0103);
+        (bool isSuccess, bytes memory res) = get_cell_addr.staticcall(
+            abi.encode(outPoint)
+        );
+
+        CellInfo memory cell;
+        if (isSuccess) {
+            cell = abi.decode(res, (CellInfo));
+            emit GetCellEvent(cell);
+        } else {
+            emit NotGetCellEvent();
+        }
+        return cell;
+    }
+}
+
+```
+
+</details>
 
 ### CallCkbVm
 
@@ -176,6 +315,104 @@ contract CallCkbVm {
 
 </details>
 
-### VerifyInCkbVm
+### CkbBlake2b
 
-🚧 Information updates in progress - stay tuned!
+| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
+| --- | --- | --- | --- |
+| 0x0000000000000000000000000000000000000106 | 60 | data | hash |
+
+Calculate the ckb-blake2b hash.
+
+#### Inputs
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Input {
+    byte[] data;
+}
+```
+
+</details>
+
+#### Output
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Output {
+    bytes32 hash;
+}
+```
+</details>
+
+### CkbMbtVerify
+
+| ADDRESS | MINIMUM GAS | INPUT | OUTPUT |
+| --- | --- | --- | --- |
+| 0x0000000000000000000000000000000000000107 | 56000 | verify proof payload | bool |
+
+Verify the CKB merkle binary tree proof.
+
+#### Inputs
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct VerifyProofPayload {
+    uint8 verifyType;
+    bytes32 transactionsRoot;
+    bytes32 witnessesRoot;
+    bytes32 rawTransactionsRoot;
+    Proof proof;
+}
+
+struct Proof {
+    uint32[] indices;
+    bytes32[] lemmas;
+    bytes32[] leaves;
+}
+```
+If the verify_type is 0, the leaves should be in the rawTransactionsRoot, otherwise in the witnessesRoot.
+
+</details>
+
+#### Output
+
+<details><summary>Click here to view ABI</summary>
+
+```solidity
+struct Output {
+    bool ret;
+}
+```
+</details>
+
+#### Example
+
+<details><summary>Click here to view example</summary>
+
+```solidity
+contract VerifyCMBTRoot {
+    event VerifyCMBTRootEvent(bool);
+    event NotVerifyCMBTRootEvent();
+
+    int8 ret;
+
+    function verifyCMBTRoot(VerifyProofPayload payload) public returns (bool) {
+        address get_cell_addr = address(0x0107);
+        (bool isSuccess, bytes memory res) = get_cell_addr.staticcall(
+            abi.encode(payload)
+        );
+
+        if (isSuccess) {
+            emit VerifyCMBTRootEvent(isSuccess);
+        } else {
+            emit NotVerifyCMBTRootEvent();
+        }
+        return isSuccess;
+    }
+}
+```
+
+</details>
